@@ -88,3 +88,13 @@ void Exercize4_8v()
     cout << "Arrays is equivalent" << endl;
     return;
 }
+void Exercize4_9()
+{
+    using namespace std;
+    int Arr[9];
+
+    for (int i=0;i<=9;i++)
+        Arr[i]=i;
+
+    return;
+}
