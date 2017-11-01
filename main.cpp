@@ -2,6 +2,7 @@
 #include "include/vectorexercises.h"
 #include "include/iterexercises.h"
 #include "include/arrayexercises.h"
+#include "include/pointersexercises.h"
 #include <vector>
 
 // Библиотека упражнений.
@@ -10,6 +11,6 @@
 
 int main()
 {
-    Exercize4_9();
+    Exercise4_18();
     return 0;
 }

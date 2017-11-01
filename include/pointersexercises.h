@@ -1,0 +1,6 @@
+#ifndef POINTERSEXERCISES_H
+#define POINTERSEXERCISES_H
+
+void Exercise4_18();
+
+#endif // POINTERSEXERCISES_H
