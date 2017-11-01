@@ -5,5 +5,6 @@
 
 void Exercize4_7();
 void Exercize4_8();
+void Exercize4_8v();
 
 #endif // ARRAYEXERCISES_H

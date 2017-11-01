@@ -1,5 +1,6 @@
 #include "include/arrayexercises.h"
 #include <iostream>
+#include <vector>
 void Exercize4_7()
 {
     using namespace std;
@@ -35,7 +36,7 @@ void Exercize4_8()
     using namespace std;
     const int A1=10,A2=10;
     int Arr1[A1]={1,2,3,4,5,6,7,8,9,10},
-        Arr2[A2]={1,1,3,4,5,6,7,8,9,10};
+            Arr2[A2]={1,1,3,4,5,6,7,8,9,10};
 
     if ((sizeof(Arr1)/sizeof(int)) > (sizeof(Arr2)/sizeof(int)))
     {
@@ -59,6 +60,30 @@ void Exercize4_8()
             return;
         }
 
+    }
+    cout << "Arrays is equivalent" << endl;
+    return;
+}
+void Exercize4_8v()
+{
+    using namespace std;
+    vector<int> Arr1,Arr2;
+
+    for(int i=0;i<10;i++)
+        Arr1.push_back(i);
+
+    for(int i=0;i<10;i++)
+        Arr2.push_back(i);
+
+    if (Arr1 < Arr2)
+    {
+        cout << "Arr1 smaller than Arr2" << endl;
+        return;
+    }
+    if (Arr1 > Arr2)
+    {
+        cout << "Arr1 bigger than Arr2" << endl;
+        return;
     }
     cout << "Arrays is equivalent" << endl;
     return;
