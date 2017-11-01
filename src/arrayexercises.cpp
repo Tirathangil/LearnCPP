@@ -30,3 +30,36 @@ void Exercize4_7()
 
     return;
 }
+void Exercize4_8()
+{
+    using namespace std;
+    const int A1=10,A2=10;
+    int Arr1[A1]={1,2,3,4,5,6,7,8,9,10},
+        Arr2[A2]={1,1,3,4,5,6,7,8,9,10};
+
+    if ((sizeof(Arr1)/sizeof(int)) > (sizeof(Arr2)/sizeof(int)))
+    {
+        cout << "Arr1 bigger than Arr2" << endl;
+        return;
+    }
+
+    if ((sizeof(Arr1)/sizeof(int)) < (sizeof(Arr2)/sizeof(int)))
+    {
+        cout << "Arr1 smaller than Arr2" << endl;
+        return;
+    }
+
+    for (int i=0; (i<A1)&&(i<A2); i++)
+    {
+        if(Arr1[i] != Arr2[i])
+        {
+            cout << "Arr";
+            Arr1[i] > Arr2[i] ? cout<<"1" : cout<<"2";
+            cout << " is bigger";
+            return;
+        }
+
+    }
+    cout << "Arrays is equivalent" << endl;
+    return;
+}
