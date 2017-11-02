@@ -31,6 +31,42 @@ void Exercize4_7()
 
     return;
 }
+
+void Exercize4_7v()
+{
+    using namespace std;
+
+    const int A1=10, A2=4;
+    vector<int> arr1,arr2;
+    int i;
+
+    for(i=0; i<A1; i++)
+    {
+        int bufl;
+        cout << endl << "El. " << i << ": ";
+        cin >> bufl;
+        arr1.push_back(bufl);
+    }
+
+    if (arr1.size() > arr2.size())
+    {
+        for(i=0; i<arr2.size();i++)
+            arr2.push_back(arr1[i]);
+    }
+    if (arr1.size() <= arr2.size())
+    {
+        for(i=0; i<arr2.size();i++)
+            arr2.push_back(arr1[i]);
+    }
+    cout << "Array 2 elements: ";
+    for(i=0; i<arr2.size(); i++)
+    {
+        cout << arr2[i] << ", ";
+    }
+
+    return;
+}
+
 void Exercize4_8()
 {
     using namespace std;
