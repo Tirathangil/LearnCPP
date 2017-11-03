@@ -3,14 +3,32 @@
 #include "include/iterexercises.h"
 #include "include/arrayexercises.h"
 #include "include/pointersexercises.h"
-#include <vector>
+#include "include/funcexercises.h"
+#include <iostream>
 
 // Библиотека упражнений.
-// stringexercises.h - упражнения раздела 3.2.4
-// vectorexercises.h - упражнения раздела 3.3.2
+// stringexercises.h - упражнения раздела 3.2
+// vectorexercises.h - упражнения раздела 3.3
+// iterexercises.h - упражнения раздела 3.4
+// arrayexercises.h - упражнения раздела 4.1
+// pointersexercises.h - упражнения раздела 4.2-4.4
+// funcexercises.h - упражнения раздела 7
 
 int main()
 {
-    Exercize4_7v();
+
+    using namespace std;
+    try
+    {
+        cout << Exercise7_3(7,0) << endl;
+    }
+    catch (int i)
+    {
+        cout << "Error " << i << ": Negative power - this is non-correct value" << endl;
+        return 1;
+    }
+
+    cout << "All fine, program finish." << endl;
+
     return 0;
 }

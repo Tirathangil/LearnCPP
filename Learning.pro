@@ -4,11 +4,13 @@ SOURCES += main.cpp \
     src/vectorexercises.cpp \
     src/iterexercises.cpp \
     src/arrayexercises.cpp \
-    src/pointersexercises.cpp
+    src/pointersexercises.cpp \
+    src/funcexercises.cpp
 
 HEADERS += \
     include/stringsexercises.h \
     include/vectorexercises.h \
     include/iterexercises.h \
     include/arrayexercises.h \
-    include/pointersexercises.h
+    include/pointersexercises.h \
+    include/funcexercises.h
