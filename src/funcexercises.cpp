@@ -14,3 +14,10 @@ int Exercise7_3(int Arg1,int Arg2)
 
     return res;
 }
+int Exercise7_4(int Arg1)
+{
+    if(Arg1>=0)
+        return Arg1;
+    else
+        return Arg1*(-1);
+}
