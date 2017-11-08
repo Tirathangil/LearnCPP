@@ -28,11 +28,11 @@ int Exercise7_5(int Arg1, int *Arg2)
     else
         return *Arg2;
 }
-int Exercise7_6(int *Arg1, int *Arg2)
+int Exercise7_6(int &Arg1, int &Arg2)
 {
-    int buf=*Arg1;
-    *Arg1=*Arg2;
-    *Arg2=buf;
+    int buf=Arg1;
+    Arg1=Arg2;
+    Arg2=buf;
 
     return 0;
 }

@@ -23,7 +23,7 @@ int main()
     try
     {
         cout << a << " " << b << endl;
-        Exercise7_6(&a,&b);
+        Exercise7_6(a,b);
         cout << "Result: " << a << " " << b << endl;
     }
     catch (int i)
