@@ -21,3 +21,10 @@ int Exercise7_4(int Arg1)
     else
         return Arg1*(-1);
 }
+int Exercise7_5(int Arg1, int *Arg2)
+{
+    if(Arg1>*Arg2)
+        return Arg1;
+    else
+        return *Arg2;
+}

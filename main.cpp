@@ -18,9 +18,11 @@ int main()
 {
 
     using namespace std;
+
+    int a=6,b=4;
     try
     {
-        cout << Exercise7_3(7,0) << endl;
+        cout << Exercise7_5(a,&b) << endl;
     }
     catch (int i)
     {
