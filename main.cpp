@@ -22,7 +22,9 @@ int main()
     int a=6,b=4;
     try
     {
-        cout << Exercise7_5(a,&b) << endl;
+        cout << a << " " << b << endl;
+        Exercise7_6(&a,&b);
+        cout << "Result: " << a << " " << b << endl;
     }
     catch (int i)
     {
