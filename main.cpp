@@ -16,14 +16,34 @@
 
 int main()
 {
+    return 0;
+}
+
+//----- This is Exercise 7.15 function -----//
+/*
+int main(int argc, char **argv)
+{
 
     using namespace std;
 
-    vector<double> DoubleVector(10,21.5);
+    long int res=0;
+
+    if (argc<=2)
+    {
+        cout << "No parameters";
+        return 2;
+    }
 
     try
     {
-        cout << "Output sum of vector: " << Exercise7_14(&DoubleVector) << endl;
+        for(int i=1;i<argc;i++)
+        {
+            if(atol(argv[i])!=0)
+                res+=atol(argv[i]);
+            else
+                throw 2;
+        }
+
     }
     catch (int i)
     {
@@ -31,7 +51,8 @@ int main()
         return 1;
     }
 
-    cout << "All fine, program finish." << endl;
+    cout << "Sum = " << res << endl;
 
     return 0;
 }
+*/
