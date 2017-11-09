@@ -1,5 +1,6 @@
 #include "include/funcexercises.h"
 #include <iostream>
+#include <vector>
 
 int Exercise7_3(int Arg1,int Arg2)
 {
@@ -71,6 +72,25 @@ int Exercise7_13V3(int *Arr, int size)
 
     for (int i=0;i<size;i++)
         sum+=*(Arr+i);
+
+    return sum;
+}
+double Exercise7_14(std::vector<double> *DblVector)
+{
+    if (DblVector->empty())
+        throw 1;
+
+    double sum=0;
+
+    std::vector<double>::iterator Iter;
+
+    Iter=DblVector->begin();
+
+    while (Iter != DblVector->end())
+    {
+        sum+=*(Iter);
+        Iter++;
+    }
 
     return sum;
 }

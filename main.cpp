@@ -18,14 +18,12 @@ int main()
 {
 
     using namespace std;
-    const int ArrSize=10;
-    int Arr[ArrSize]={0,1,2,3,4,5,6,7,8,-32000};
-    int *pArr = &Arr[0];
+
+    vector<double> DoubleVector(10,21.5);
+
     try
     {
-        cout << "Output of variant 1: " << Exercise7_13V1(Arr) << endl;
-        cout << "Output of variant 2: " << Exercise7_13V2(&Arr[0],&Arr[9]) << endl;
-        cout << "Output of variant 3: " << Exercise7_13V3(pArr,ArrSize) << endl;
+        cout << "Output sum of vector: " << Exercise7_14(&DoubleVector) << endl;
     }
     catch (int i)
     {
