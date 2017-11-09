@@ -18,17 +18,18 @@ int main()
 {
 
     using namespace std;
-
-    int a=6,b=4;
+    const int ArrSize=10;
+    int Arr[ArrSize]={0,1,2,3,4,5,6,7,8,-32000};
+    int *pArr = &Arr[0];
     try
     {
-        cout << a << " " << b << endl;
-        Exercise7_6(a,b);
-        cout << "Result: " << a << " " << b << endl;
+        cout << "Output of variant 1: " << Exercise7_13V1(Arr) << endl;
+        cout << "Output of variant 2: " << Exercise7_13V2(&Arr[0],&Arr[9]) << endl;
+        cout << "Output of variant 3: " << Exercise7_13V3(pArr,ArrSize) << endl;
     }
     catch (int i)
     {
-        cout << "Error " << i << ": Negative power - this is non-correct value" << endl;
+        cout << "Error " << endl;
         return 1;
     }
 
