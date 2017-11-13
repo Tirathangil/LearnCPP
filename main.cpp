@@ -6,14 +6,14 @@
 #include "include/funcexercises.h"
 #include <iostream>
 
-// Библиотека упражнений.
+/* Библиотека упражнений.
 // stringexercises.h - упражнения раздела 3.2
 // vectorexercises.h - упражнения раздела 3.3
 // iterexercises.h - упражнения раздела 3.4
 // arrayexercises.h - упражнения раздела 4.1
 // pointersexercises.h - упражнения раздела 4.2-4.4
 // funcexercises.h - упражнения раздела 7
-
+*/
 int main()
 {
     return 0;
