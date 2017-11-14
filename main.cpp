@@ -4,6 +4,7 @@
 #include "include/arrayexercises.h"
 #include "include/pointersexercises.h"
 #include "include/funcexercises.h"
+#include "include/iolib.h"
 #include <iostream>
 
 /* Библиотека упражнений.
@@ -13,7 +14,9 @@
 // arrayexercises.h - упражнения раздела 4.1
 // pointersexercises.h - упражнения раздела 4.2-4.4
 // funcexercises.h - упражнения раздела 7
+// iolib.h - упражнения раздела 8
 */
+
 int main()
 {
     return 0;
