@@ -41,7 +41,31 @@ void Exercize8_9()
 
     for (int i=0;i<ExVect.size();i++)
     {
-        cout << ExVect[i] << " ";
+        cout << i << ": "<< ExVect[i] << " " << endl;
+    }
+    return;
+}
+
+void Exercize8_10()
+{
+    using namespace std;
+
+    vector<string> ExVect;
+    ifstream FileStr;
+
+    FileStr.open("test.txt");
+    if(!FileStr.is_open())
+        throw 1;
+    while(!FileStr.eof())
+    {
+        string Buf;
+        FileStr >> Buf;
+        ExVect.push_back(Buf);
+    }
+
+    for (int i=0;i<ExVect.size();i++)
+    {
+        cout << i << ": "<< ExVect[i] << " " << endl;
     }
     return;
 }
