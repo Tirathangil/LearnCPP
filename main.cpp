@@ -10,6 +10,7 @@
 
 int main()
 {
+    Exercize8_9();
     return 0;
 }
 
