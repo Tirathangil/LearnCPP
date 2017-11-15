@@ -19,6 +19,9 @@
 
 int main()
 {
+    Exercise8_3(std::cin);
+    std::cout << "Execution finish" << std::endl;
+
     return 0;
 }
 
