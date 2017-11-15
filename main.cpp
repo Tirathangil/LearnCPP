@@ -6,6 +6,12 @@
 #include "include/funcexercises.h"
 #include "include/iolib.h"
 #include <iostream>
+#include <fstream>
+
+int main()
+{
+    return 0;
+}
 
 /* Библиотека упражнений.
 // stringexercises.h - упражнения раздела 3.2
@@ -17,6 +23,25 @@
 // iolib.h - упражнения раздела 8
 */
 
+//----- This is Exercise 8.6 function -----//
+/*
+int main()
+{
+    std::ifstream FileStream;
+
+    FileStream.open("test.txt");
+    if(FileStream.is_open())
+        Exercise8_3(FileStream);
+    else
+        return 1;
+    FileStream.close();
+
+    return 0;
+}
+*/
+
+//----- This is Exercise 8.3 function -----//
+/*
 int main()
 {
     Exercise8_3(std::cin);
@@ -24,6 +49,7 @@ int main()
 
     return 0;
 }
+*/
 
 //----- This is Exercise 7.15 function -----//
 /*
