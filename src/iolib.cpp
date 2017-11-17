@@ -29,7 +29,7 @@ void Exercize8_9()
     vector<string> ExVect;
     ifstream FileStr;
 
-    FileStr.open("test.txt");
+    FileStr.open("testwrite.txt");
     if(!FileStr.is_open())
         throw 1;
     while(!FileStr.eof())
@@ -45,7 +45,6 @@ void Exercize8_9()
     }
     return;
 }
-
 void Exercize8_10()
 {
     using namespace std;
@@ -53,7 +52,7 @@ void Exercize8_10()
     vector<string> ExVect;
     ifstream FileStr;
 
-    FileStr.open("test.txt");
+    FileStr.open("testwrite.txt");
     if(!FileStr.is_open())
         throw 1;
     while(!FileStr.eof())
@@ -67,5 +66,22 @@ void Exercize8_10()
     {
         cout << i << ": "<< ExVect[i] << " " << endl;
     }
+    return;
+}
+void Exercize8_13(std::string FileName)
+{
+    using namespace std;
+
+    ofstream OutFile;
+    string Buffer;
+    OutFile.open(FileName,ios_base::out | ios_base::app);
+    if(!OutFile.is_open())
+        throw 1;
+    cout << "Enter the text. Ctrl-Z ends type." << endl;
+    while (cin >> Buffer)
+        OutFile << Buffer << endl;
+    OutFile.close();
+    OutFile.clear();
+
     return;
 }
