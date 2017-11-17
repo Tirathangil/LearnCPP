@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 std::istream& Exercise8_3(std::istream &DataStream)
 {
@@ -83,5 +84,32 @@ void Exercize8_13(std::string FileName)
     OutFile.close();
     OutFile.clear();
 
+    return;
+}
+void Exercise8_16()
+{
+    using namespace std;
+
+    vector<string> StrVec;
+    ifstream InputFile;
+
+    InputFile.open("Input.txt");
+    if(!InputFile.is_open())
+        throw 1;
+    while (!InputFile.eof())
+    {
+        string Buf;
+        getline(InputFile,Buf);
+        StrVec.push_back(Buf);
+    }
+
+    for(int i=0; i<StrVec.size();i++)
+    {
+        istringstream StrStr(StrVec[i]);
+        string Buf2;
+
+        while(StrStr >> Buf2)
+            cout << Buf2 << endl;
+    }
     return;
 }
