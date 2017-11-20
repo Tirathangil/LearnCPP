@@ -12,9 +12,9 @@
 int main()
 {
     using namespace std;
-    cout << "Exercise 9_12" << endl;
+    cout << "Exercise 9_13" << endl;
     vector<int> TestVec = {1,2,3,4,5,6,7,8,9,10,11};
-    cout << Exercise9_12(TestVec.begin(),TestVec.end(),12) << endl;
+    cout << *(Exercise9_13(TestVec.begin(),TestVec.end(),8)) << endl;
     return 0;
 }
 
