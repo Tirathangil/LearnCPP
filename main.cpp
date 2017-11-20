@@ -5,12 +5,16 @@
 #include "include/pointersexercises.h"
 #include "include/funcexercises.h"
 #include "include/iolib.h"
+#include "include/contsexercises.h"
 #include <iostream>
 #include <fstream>
 
 int main()
 {
-    Exercise8_16();
+    using namespace std;
+    cout << "Exercise 9_12" << endl;
+    vector<int> TestVec = {1,2,3,4,5,6,7,8,9,10,11};
+    cout << Exercise9_12(TestVec.begin(),TestVec.end(),12) << endl;
     return 0;
 }
 
