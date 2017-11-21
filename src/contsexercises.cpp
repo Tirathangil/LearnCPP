@@ -1,9 +1,8 @@
 #include "include/contsexercises.h"
 
-bool Exercise9_12(std::vector<int>::iterator fiter,std::vector<int>::iterator liter, int searchnum)
+using namespace std;
+bool Exercise9_12(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum)
 {
-    using namespace std;
-
     while (fiter!=liter)
     {
         if (*fiter==searchnum)
@@ -13,10 +12,8 @@ bool Exercise9_12(std::vector<int>::iterator fiter,std::vector<int>::iterator li
 
     return false;
 }
-std::vector<int>::iterator Exercise9_13(std::vector<int>::iterator fiter,std::vector<int>::iterator liter, int searchnum)
+vector<int>::iterator Exercise9_13(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum)
 {
-    using namespace std;
-
     while (fiter!=liter)
     {
         if (*liter==searchnum)
@@ -26,4 +23,15 @@ std::vector<int>::iterator Exercise9_13(std::vector<int>::iterator fiter,std::ve
 
     return fiter;
 
+}
+void Exercise9_14(vector<string>::iterator F_iter,vector<string>::iterator L_iter)
+{
+    using namespace std;
+    while (F_iter!=L_iter)
+    {
+        cout << "Enter string: ";
+        getline(cin,*F_iter);
+        cout << endl;
+        F_iter++;
+    }
 }

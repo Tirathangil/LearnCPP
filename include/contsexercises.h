@@ -1,8 +1,13 @@
 #ifndef CONTSEXERCISES_H
 #define CONTSEXERCISES_H
 #include <vector>
+#include <string>
+#include <iostream>
 
-bool Exercise9_12(std::vector<int>::iterator fiter,std::vector<int>::iterator liter, int searchnum);
-std::vector<int>::iterator Exercise9_13(std::vector<int>::iterator fiter,std::vector<int>::iterator liter, int searchnum);
+using namespace std;
+
+bool Exercise9_12(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum);
+vector<int>::iterator Exercise9_13(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum);
+void Exercise9_14(vector<string>::iterator F_iter,vector<string>::iterator L_iter);
 
 #endif // CONTSEXERCISES_H
