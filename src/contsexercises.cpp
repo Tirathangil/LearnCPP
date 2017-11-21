@@ -35,3 +35,15 @@ void Exercise9_14(vector<string>::iterator F_iter,vector<string>::iterator L_ite
         F_iter++;
     }
 }
+
+void Exercise9_15(list<string>::iterator F_iter,list<string>::iterator L_iter)
+{
+    using namespace std;
+    while (F_iter!=L_iter)
+    {
+        cout << "Enter string: ";
+        getline(cin,*F_iter);
+        cout << endl;
+        F_iter++;
+    }
+}

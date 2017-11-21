@@ -12,12 +12,13 @@
 int main()
 {
     using namespace std;
-    vector<string>::size_type VecSize = 10;
-    vector<string> TestVector(VecSize);
-    Exercise9_14(TestVector.begin(),TestVector.end());
+    list<string>::size_type VecSize = 10;
+    list<string> TestVector(VecSize);
+    list<string>::iterator Iter=TestVector.begin();
+    Exercise9_15(TestVector.begin(),TestVector.end());
 
-    for(int i=0;i<TestVector.size();i++)
-        cout << "Vector element " << i << ": " << TestVector[i] << endl;
+    for(int i=0;i<TestVector.size();i++,Iter++)
+        cout << "Vector element " << i << ": " << *Iter << endl;
 
     return 0;
 }
