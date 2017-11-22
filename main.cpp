@@ -14,8 +14,12 @@ int main()
     using namespace std;
 
     list<int> ExpList = {0,1,2,3,4,5,6,7,8,9,10,11,12};
+    vector<int> ExpVector = {0,1,2,3,4,5,6,7,8,9,10};
 
-    Exercise9_18(&ExpList);
+    if(Exercise9_20(&ExpList,&ExpVector))
+        cout << "Vector and list is equal" << endl;
+    else
+        cout << "Vector and list not equal" << endl;
 
     return 0;
 }
@@ -28,6 +32,7 @@ int main()
 // pointersexercises.h - упражнения раздела 4.2-4.4
 // funcexercises.h - упражнения раздела 7
 // iolib.h - упражнения раздела 8
+// contsexercises.h - упражнения раздела 9
 */
 
 //----- This is Exercise 8.6 function -----//

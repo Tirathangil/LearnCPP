@@ -73,3 +73,16 @@ void Exercise9_18(list<int> *IntList)
 
     return;
 }
+bool Exercise9_20(list<int> *IntList,vector<int> *IntVector)
+{
+    list<int>::iterator ListIter = IntList->begin();
+    vector<int>::iterator VectorIter = IntVector->begin();
+
+    if(IntList->size() != IntVector->size())
+        return false;
+    for(int i=0;i<IntList->size();i++,ListIter++,VectorIter++)
+        if(*ListIter!=*VectorIter)
+            return false;
+
+    return true;
+}
