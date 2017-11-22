@@ -35,7 +35,6 @@ void Exercise9_14(vector<string>::iterator F_iter,vector<string>::iterator L_ite
         F_iter++;
     }
 }
-
 void Exercise9_15(list<string>::iterator F_iter,list<string>::iterator L_iter)
 {
     using namespace std;
@@ -46,4 +45,31 @@ void Exercise9_15(list<string>::iterator F_iter,list<string>::iterator L_iter)
         cout << endl;
         F_iter++;
     }
+}
+void Exercise9_18(list<int> *IntList)
+{
+    list<int> EvenList;
+    list<int> OddList;
+    list<int>::iterator BegIntListIter = IntList->begin(),
+                        EndIntListIter = IntList->end();
+    while (BegIntListIter != EndIntListIter)
+    {
+        if(!(*BegIntListIter%2))
+            EvenList.push_back(*BegIntListIter);
+        else
+            OddList.push_back(*BegIntListIter);
+        BegIntListIter++;
+    }
+
+    list<int>::iterator OutIter = EvenList.begin();
+
+    cout << "Even list: ";
+    for (int i=0;i<EvenList.size();i++,OutIter++)
+        cout << *OutIter << " ";
+    cout << endl << "Odd list: ";
+    OutIter = OddList.begin();
+    for (int i=0;i<OddList.size();i++,OutIter++)
+        cout << *OutIter << " ";
+
+    return;
 }

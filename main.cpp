@@ -12,13 +12,10 @@
 int main()
 {
     using namespace std;
-    list<string>::size_type VecSize = 10;
-    list<string> TestVector(VecSize);
-    list<string>::iterator Iter=TestVector.begin();
-    Exercise9_15(TestVector.begin(),TestVector.end());
 
-    for(int i=0;i<TestVector.size();i++,Iter++)
-        cout << "Vector element " << i << ": " << *Iter << endl;
+    list<int> ExpList = {0,1,2,3,4,5,6,7,8,9,10,11,12};
+
+    Exercise9_18(&ExpList);
 
     return 0;
 }
