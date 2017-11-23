@@ -86,3 +86,16 @@ bool Exercise9_20(list<int> *IntList,vector<int> *IntVector)
 
     return true;
 }
+void Exercise9_24(vector<string> IntVector)
+{
+    //Обращение через at();
+    cout << IntVector.at(0) << endl;
+    //По индексу...
+    cout << IntVector[0] << endl;
+    // По итератору.
+    cout << *IntVector.begin() << endl;
+
+    //Если код выполнится, это значит, что в лесу что-то сдохло.
+    cout << "Этого просто не может быть никогда" << endl;
+    return;
+}

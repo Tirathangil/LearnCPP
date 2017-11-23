@@ -13,5 +13,5 @@ void Exercise9_14(vector<string>::iterator F_iter,vector<string>::iterator L_ite
 void Exercise9_15(list<string>::iterator F_iter,list<string>::iterator L_iter);
 void Exercise9_18(list<int> *IntList);
 bool Exercise9_20(list<int> *IntList,vector<int> *IntVector);
-
+void Exercise9_24(vector<string> IntVector);
 #endif // CONTSEXERCISES_H
