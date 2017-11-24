@@ -232,13 +232,15 @@ void Exercise9_39()
         LookList++;
     }
 
-    cout << "Shortest word(s): ";
+    cout << endl << "Shortest word(s): ";
     LookList = Smallest.begin();
     while (LookList != Smallest.end())
     {
         cout << *LookList << " ";
         LookList++;
     }
+
+    cout << endl << "Count of words: " << Words.size() << endl;
 
     return;
 }
