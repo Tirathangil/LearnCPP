@@ -16,4 +16,5 @@ bool Exercise9_20(list<int> *IntList,vector<int> *IntVector);
 void Exercise9_24(vector<string> IntVector);
 void Exercise9_26L();
 void Exercise9_26Q();
+void Exercise9_39();
 #endif // CONTSEXERCISES_H

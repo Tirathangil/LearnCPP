@@ -1,5 +1,7 @@
 #include "include/contsexercises.h"
 #include <deque>
+#include <sstream>
+#include <cctype>
 
 using namespace std;
 bool Exercise9_12(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum)
@@ -52,7 +54,7 @@ void Exercise9_18(list<int> *IntList)
     list<int> EvenList;
     list<int> OddList;
     list<int>::iterator BegIntListIter = IntList->begin(),
-                        EndIntListIter = IntList->end();
+            EndIntListIter = IntList->end();
     while (BegIntListIter != EndIntListIter)
     {
         if(!(*BegIntListIter%2))
@@ -128,7 +130,6 @@ void Exercise9_26L()
 
     return;
 }
-
 void Exercise9_26Q()
 {
     deque<string> TestList = {"Alpha","Beta","Gamma","Delta","Ro","Epsylon","Kappa","Sigma"};
@@ -153,6 +154,90 @@ void Exercise9_26Q()
     {
         cout << *SearchIter << " ";
         SearchIter++;
+    }
+
+    return;
+}
+void Exercise9_39()
+{
+    string String1 = "We were her pride of 10 she named us:";
+    string String2 = "Benjamin, Phoenix, the Prodigal";
+    string String3 = "and perspicacious pacific Suzanne";
+    string Sentence = String1 + ' ' + String2 + ' ' + String3;
+    string Buffer;
+    istringstream SentStream(Sentence);
+    vector<string> Words;
+    list<string> Longest, Smallest;
+    list<string>::iterator LookList;
+    vector<string>::iterator Look;
+
+    while(SentStream >> Buffer)
+        Words.push_back(Buffer);
+
+    //Здесь находится очистка слов от пунктуационного мусора
+    Look = Words.begin();
+    while(Look != Words.end())
+    {
+        string::iterator StrLooker = Look->begin();
+        while (StrLooker<Look->end()) {
+            if(ispunct(*StrLooker))
+                Look->erase(StrLooker);
+            StrLooker++;
+        }
+        Look++;
+    }
+    //Здесь определяются самые длинное и короткое слова
+
+    Look = Words.begin();
+    Longest.push_back(*Look);
+    Look++;
+    LookList=Longest.begin();
+    while(Look != Words.end())
+    {
+        if(Look->length() == LookList->length())
+            Longest.push_back(*Look);
+        if(Look->length() > LookList->length())
+        {
+            Longest.clear();
+            Longest.push_back(*Look);
+            LookList=Longest.begin();
+        }
+        Look++;
+    }
+
+    Look = Words.begin();
+    Smallest.push_back(*Look);
+    Look++;
+    LookList=Smallest.begin();
+    while(Look != Words.end())
+    {
+        if(Look->length() == LookList->length())
+            Smallest.push_back(*Look);
+        if(Look->length() < LookList->length())
+        {
+            Smallest.clear();
+            Smallest.push_back(*Look);
+            LookList=Smallest.begin();
+        }
+        Look++;
+    }
+
+    // Здесь находится вывод на экран уже определенных слов.
+
+    cout << "Longest word(s): ";
+    LookList = Longest.begin();
+    while (LookList != Longest.end())
+    {
+        cout << *LookList << " ";
+        LookList++;
+    }
+
+    cout << "Shortest word(s): ";
+    LookList = Smallest.begin();
+    while (LookList != Smallest.end())
+    {
+        cout << *LookList << " ";
+        LookList++;
     }
 
     return;

@@ -13,7 +13,7 @@ int main()
 {
     using namespace std;
 
-    Exercise9_26Q();
+    Exercise9_39();
 
     return 0;
 }
