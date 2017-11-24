@@ -1,4 +1,5 @@
 #include "include/contsexercises.h"
+#include <deque>
 
 using namespace std;
 bool Exercise9_12(vector<int>::iterator fiter,vector<int>::iterator liter, int searchnum)
@@ -97,5 +98,62 @@ void Exercise9_24(vector<string> IntVector)
 
     //Если код выполнится, это значит, что в лесу что-то сдохло.
     cout << "Этого просто не может быть никогда" << endl;
+    return;
+}
+void Exercise9_26L()
+{
+    list<string> TestList = {"Alpha","Beta","Gamma","Delta","Ro","Epsylon","Kappa","Sigma"};
+    list<string>::iterator SearchIter = TestList.begin();
+    string SearchString;
+
+    cout << "Enter the search query: ";
+    getline(cin,SearchString);
+
+    while(SearchIter!=TestList.end())
+    {
+        if (*SearchIter==SearchString)
+        {
+            TestList.erase(SearchIter);
+            break;
+        }
+        SearchIter++;
+    }
+
+    SearchIter=TestList.begin();
+    while(SearchIter!=TestList.end())
+    {
+        cout << *SearchIter << " ";
+        SearchIter++;
+    }
+
+    return;
+}
+
+void Exercise9_26Q()
+{
+    deque<string> TestList = {"Alpha","Beta","Gamma","Delta","Ro","Epsylon","Kappa","Sigma"};
+    deque<string>::iterator SearchIter = TestList.begin();
+    string SearchString;
+
+    cout << "Enter the search query: ";
+    getline(cin,SearchString);
+
+    while(SearchIter!=TestList.end())
+    {
+        if (*SearchIter==SearchString)
+        {
+            TestList.erase(SearchIter);
+            break;
+        }
+        SearchIter++;
+    }
+
+    SearchIter=TestList.begin();
+    while(SearchIter!=TestList.end())
+    {
+        cout << *SearchIter << " ";
+        SearchIter++;
+    }
+
     return;
 }

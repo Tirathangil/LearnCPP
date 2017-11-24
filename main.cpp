@@ -13,6 +13,8 @@ int main()
 {
     using namespace std;
 
+    Exercise9_26Q();
+
     return 0;
 }
 
