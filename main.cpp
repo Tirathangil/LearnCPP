@@ -6,14 +6,14 @@
 #include "include/funcexercises.h"
 #include "include/iolib.h"
 #include "include/contsexercises.h"
+#include "include/assoc.h"
 #include <iostream>
 #include <fstream>
 
 int main()
 {
-    using namespace std;
 
-    Exercise9_39();
+    Exercise10_18();
 
     return 0;
 }

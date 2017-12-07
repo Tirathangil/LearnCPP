@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     src/pointersexercises.cpp \
     src/funcexercises.cpp \
     src/iolib.cpp \
-    src/contsexercises.cpp
+    src/contsexercises.cpp \
+    src/assoc.cpp
 
 HEADERS += \
     include/stringsexercises.h \
@@ -17,4 +18,5 @@ HEADERS += \
     include/pointersexercises.h \
     include/funcexercises.h \
     include/iolib.h \
-    include/contsexercises.h
+    include/contsexercises.h \
+    include/assoc.h
