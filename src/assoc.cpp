@@ -56,7 +56,7 @@ void Exercise10_18()
 }
 void Exercise10_19()
 {
-    typedef vector<string> Names;
+    typedef vector<pair<string,string>> Names;
     map<string,Names> Families;
 
     cout << "Ex. 10.18" << endl;
@@ -71,14 +71,17 @@ void Exercise10_19()
         {
             pair<string,Names> FamPair;
             string Name;
+            string Date;
             cout << "Enter Family: ";
             cin >> FamPair.first;
-            cout << "Enter name of one of childs: ";
             while(Name!="end;")
             {
+                cout << "Enter name: ";
                 cin >> Name;
+                cout << "Enter birthdate: ";
+                cin >> Date;
                 if(Name!="end;")
-                    FamPair.second.push_back(Name);
+                    FamPair.second.push_back(pair<string,string>(Name,Date));
             }
             Families.insert(FamPair);
         }
@@ -94,7 +97,7 @@ void Exercise10_19()
                 cout << "Family: " << ViewFam->first << endl << "Childs: ";
                 for(Names::iterator Childs = ViewFam->second.begin();Childs!=ViewFam->second.end();Childs++)
                 {
-                    cout << *Childs << " ";
+                    cout << Childs->first << " (" << Childs->second << "), ";
                 }
                 cout << endl;
             }
