@@ -106,3 +106,115 @@ void Exercise10_19()
     } while(Command!="Close");
     cout << "Execution finished." << endl;
 }
+void Exercise10_26()
+{
+    typedef pair<string,string> BookTitle;
+    multimap<string,string> Authors;
+    multimap<string,string>::iterator ServIter;
+    string Author,Book,Command;
+
+    cout << "Exercise 10.26" << endl;
+
+    do
+    {
+        cout << ">>[" << Authors.size() << "]: ";
+        cin >> Command;
+
+        if(Command=="Add")
+        {
+            cout << "Enter author's name: ";
+            getline(cin,Author);
+            cout << "Enter book's title: ";
+            getline(cin,Book);
+            Authors.insert(BookTitle(Author,Book));
+        }
+        if(Command=="View")
+        {
+            cout << "Enter author's name: ";
+            cin >> Author;
+            ServIter = Authors.find(Author);
+            if(ServIter!=Authors.end())
+            {
+                cout << "Author: " << ServIter->first << endl
+                     << "Title: " << ServIter->second << endl;
+            }
+            else
+                cout << "No authors find" << endl;
+        }
+        if(Command=="Delete")
+        {
+            cout << "Enter author's name: ";
+            cin >> Author;
+            cout << "Do you REALLY want to do it? (yes/no):";
+            cin >> Command;
+            if(Command=="yes")
+            {
+                ServIter = Authors.find(Author);
+                if(ServIter != Authors.end())
+                {
+                    Authors.erase(ServIter);
+                    ServIter = Authors.begin();
+                }
+                else
+                    cout << "No records about this author" << endl;
+            }
+        }
+
+        Author="";
+        Book="";
+    } while(Command!="Close");
+}
+void Exercise10_27()
+{
+    typedef pair<string,string> BookTitle;
+    typedef multimap<string,string> AuthorsList;
+    AuthorsList Authors;
+    pair<AuthorsList::iterator,AuthorsList::iterator>ServIter;
+    string Author,Book,Command;
+
+    cout << "Exercise 10.27" << endl;
+
+    do
+    {
+        cout << ">>[" << Authors.size() << "]: ";
+        cin >> Command;
+
+        if(Command=="Add")
+        {
+            cout << "Enter author's name: ";
+            cin >> Author;
+            cout << "Enter book's title: ";
+            cin >> Book;
+            Authors.insert(BookTitle(Author,Book));
+        }
+        if(Command=="View")
+        {
+            cout << "Enter author's name: ";
+            cin >> Author;
+            ServIter = Authors.equal_range(Author);
+            for(AuthorsList::iterator Iter=ServIter.first;Iter!=ServIter.second;++Iter)
+            {
+                cout << "Author: " << Iter->first << endl
+                     << "Title: " << Iter->second << endl;
+            }
+        }
+        if(Command=="Delete")
+        {
+            cout << "Enter author's name: ";
+            cin >> Author;
+            cout << "Do you REALLY want to do it? (yes/no):";
+            cin >> Command;
+            if(Command=="yes")
+            {
+                ServIter = Authors.equal_range(Author);
+                for(AuthorsList::iterator Iter=ServIter.first;(Iter!=Authors.end()) || (Iter!=ServIter.second);Iter++)
+                {
+                    Authors.erase(Iter);
+                }
+            }
+        }
+
+        Author="";
+        Book="";
+    } while(Command!="Close");
+}
