@@ -7,13 +7,14 @@
 #include "include/iolib.h"
 #include "include/contsexercises.h"
 #include "include/assoc.h"
+#include "include/algos.h"
 #include <iostream>
 #include <fstream>
 
 int main()
 {
 
-    Exercise10_27();
+    Exercise11_3();
 
     return 0;
 }
@@ -27,6 +28,8 @@ int main()
 // funcexercises.h - упражнения раздела 7
 // iolib.h - упражнения раздела 8
 // contsexercises.h - упражнения раздела 9
+// assoc.h - упражнения раздела 10
+// algos.h - упражнения раздела 11
 */
 
 //----- This is Exercise 8.6 function -----//
