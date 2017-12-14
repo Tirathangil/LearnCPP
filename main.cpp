@@ -14,7 +14,7 @@
 int main()
 {
 
-    Exercise11_3();
+    Exercise11_6();
 
     return 0;
 }
