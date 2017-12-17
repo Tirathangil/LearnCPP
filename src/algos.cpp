@@ -31,7 +31,7 @@ void Exercise11_6()
 }
 void Exercise11_9()
 {
-    vector<string> Gr4words;
+    vector<string> *Gr4words = new vector<string>;
     vector<string>::iterator WordsIter;
     ifstream SrcFile;
     string Buffer;
@@ -47,19 +47,50 @@ void Exercise11_9()
     while(!SrcFile.eof())
     {
         SrcFile >> Buffer;
-        if(Buffer.size()>=4)
+
+        for(string::iterator CharIt = Buffer.begin();CharIt < Buffer.end();CharIt++)
         {
-            Gr4words.push_back(Buffer);
+            if(ispunct(*CharIt))
+                *CharIt=' ';
+        }
+        for(string::iterator CharIt = Buffer.begin();CharIt < Buffer.end();CharIt++)
+        {
+            if(!isalnum(*CharIt))
+            {
+                Buffer.erase(CharIt);
+            }
+            else break;
+        }
+        for(int i = 0; i < Buffer.length();i++)
+        {
+            if(isspace(Buffer[i]))
+            {
+                Gr4words->push_back(Buffer.substr(0,i));
+                Buffer.erase(0,i);
+                break;
+            }
         }
     }
-
     SrcFile.close();
-    unique(Gr4words.begin(),Gr4words.end());
 
-    for(WordsIter = Gr4words.begin(); WordsIter < Gr4words.end();WordsIter++)
+    WordsIter = Gr4words->begin();
+    while(WordsIter != Gr4words->end())
+    {
+        if(WordsIter->length() < 4 || WordsIter->empty())
+        {
+            Gr4words->erase(WordsIter);
+            WordsIter = Gr4words->begin();
+        }
+        WordsIter++;
+    }
+
+    sort(Gr4words->begin(),Gr4words->end());
+    vector<string>::iterator Uni;
+    Uni = unique(Gr4words->begin(),Gr4words->end());
+    Gr4words->erase(Uni,Gr4words->end());
+
+    for(WordsIter = Gr4words->begin(); WordsIter < Gr4words->end();WordsIter++)
         cout << *WordsIter << endl;
-
-
 
     return;
 }
