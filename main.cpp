@@ -8,14 +8,16 @@
 #include "include/contsexercises.h"
 #include "include/assoc.h"
 #include "include/algos.h"
+#include "include/classes.h"
 #include <iostream>
 #include <fstream>
 
 int main()
 {
+    std::ifstream TestFile;
+    Ex12_21 Prim21(TestFile);
 
-    Exercise11_9();
-
+    Prim21.show_values();
     return 0;
 }
 
@@ -30,6 +32,7 @@ int main()
 // contsexercises.h - упражнения раздела 9
 // assoc.h - упражнения раздела 10
 // algos.h - упражнения раздела 11
+// classes.h - упражнения раздела 12
 */
 
 //----- This is Exercise 8.6 function -----//

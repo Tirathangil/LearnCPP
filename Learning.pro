@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     src/iolib.cpp \
     src/contsexercises.cpp \
     src/assoc.cpp \
-    src/algos.cpp
+    src/algos.cpp \
+    src/classes.cpp
 
 HEADERS += \
     include/stringsexercises.h \
@@ -21,4 +22,5 @@ HEADERS += \
     include/iolib.h \
     include/contsexercises.h \
     include/assoc.h \
-    include/algos.h
+    include/algos.h \
+    include/classes.h
