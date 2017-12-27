@@ -25,4 +25,13 @@ public:
     inline int getVar(){return InteVar;};
 };
 
+class Bar
+{
+    static int Calls;
+    static Foo FooStat;
+public:
+    static Foo FooVal();
+    static void callsFooVal();
+};
+
 #endif // CLASSES_H

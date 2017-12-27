@@ -14,8 +14,14 @@
 
 int main()
 {
-    Foo TestObj(5);
-    std::cout << TestObj.getVar() << std::endl;
+    Foo Tests;
+
+    Tests = Bar::FooVal();
+    Bar::callsFooVal();
+
+    Tests = Bar::FooVal();
+    Bar::callsFooVal();
+
     return 0;
 }
 
