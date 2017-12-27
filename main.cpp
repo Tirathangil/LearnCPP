@@ -14,10 +14,8 @@
 
 int main()
 {
-    std::ifstream TestFile;
-    Ex12_21 Prim21(TestFile);
-
-    Prim21.show_values();
+    Foo TestObj(5);
+    std::cout << TestObj.getVar() << std::endl;
     return 0;
 }
 

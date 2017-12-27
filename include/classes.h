@@ -3,7 +3,6 @@
 
 #include <fstream>
 
-
 class Ex12_21
 {
     const std::string Str;
@@ -13,6 +12,17 @@ class Ex12_21
 public:
     Ex12_21(std::ifstream& );
     void show_values();
+};
+
+//Упражнения раздела 12.6.1
+
+class Foo
+{
+    int InteVar;
+public:
+    Foo();
+    Foo(int InitVar);
+    inline int getVar(){return InteVar;};
 };
 
 #endif // CLASSES_H
