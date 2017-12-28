@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <numeric>
 #include <fstream>
 
 using namespace std;
