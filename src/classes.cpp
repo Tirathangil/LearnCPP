@@ -31,3 +31,27 @@ void Bar::callsFooVal()
 {
     std::cout << "Calls: " << Calls << std::endl;
 }
+
+int Employee::LastUID = 0;
+int Employee::setUID()
+{
+    Employee::LastUID++;
+    return LastUID;
+}
+
+Employee::Employee()
+{
+    Name = "John Doe";
+    UID = setUID();
+}
+Employee::Employee(Employee& NextEmplo)
+{
+    Name = NextEmplo.Name;
+    UID = setUID();
+}
+Employee& Employee::operator =(const Employee& EqEmplo)
+{
+   Name = EqEmplo.Name;
+   UID = setUID();
+   return *this;
+}

@@ -14,13 +14,10 @@
 
 int main()
 {
-    Foo Tests;
+    Employee Alpha;
+    Employee Beta(Alpha);
 
-    Tests = Bar::FooVal();
-    Bar::callsFooVal();
-
-    Tests = Bar::FooVal();
-    Bar::callsFooVal();
+    std::cout << Alpha.getUID() << " and " << Beta.getUID() << std::endl;
 
     return 0;
 }

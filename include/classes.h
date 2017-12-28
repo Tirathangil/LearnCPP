@@ -2,6 +2,7 @@
 #define CLASSES_H
 
 #include <fstream>
+#include <string>
 
 class Ex12_21
 {
@@ -34,4 +35,21 @@ public:
     static void callsFooVal();
 };
 
+//Упражнение 13.10
+class Employee
+{
+    std::string Name;
+    int UID;
+    static int LastUID;
+    static int setUID();
+public:
+    Employee();
+    Employee(Employee& NextEmplo);
+    Employee& operator=(const Employee &EqEmplo);
+
+    inline int getUID()
+    {
+      return UID;
+    }
+};
 #endif // CLASSES_H
