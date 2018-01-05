@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     src/contsexercises.cpp \
     src/assoc.cpp \
     src/algos.cpp \
-    src/classes.cpp
+    src/classes.cpp \
+    src/ch13ex.cpp
 
 HEADERS += \
     include/stringsexercises.h \
@@ -23,4 +24,5 @@ HEADERS += \
     include/contsexercises.h \
     include/assoc.h \
     include/algos.h \
-    include/classes.h
+    include/classes.h \
+    include/ch13ex.h

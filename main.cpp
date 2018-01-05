@@ -14,12 +14,7 @@
 
 int main()
 {
-    Employee Alpha;
-    Employee Beta(Alpha);
 
-    std::cout << Alpha.getUID() << " and " << Beta.getUID() << std::endl;
-
-    return 0;
 }
 
 /* Библиотека упражнений.
