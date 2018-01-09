@@ -1,54 +1,55 @@
-// include/ch13ex.h
-// Создано специально для модифицированной задачи из упражнений 13.16-13.19
-// Сделать упрощенную (не онлайновую) почтовую систему.
-// 1. Есть сообщения
-// 2. Есть папки
-// 3. Есть теги
-// 4. Все данные сохраняются на диск и при запуске программы подгружаются с диска.
-// 5. Командный интерфейс.
+#include "include/ch13ex.h"
+#include <algorithm>
+//Инициализация static-членов классов.
+unsigned long int Message::LastUID = 0;
+std::set<Folder*> Folder::KnownFolders;
+std::set<Tag*> Tag::KnownTags;
 
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-#include <set>
-
-class Message
+// Реализация Message
+Message::Message(std::string Sender, Text MessageText)
 {
-    unsigned long int MessUID;
-    std::string Sender;
-    Text MessText;
-    Folder *MessFolder;
-    std::set<*Tag> MessTags;
-    static unsigned long int LastUID;
-    Message();
-    Message& operator =(const Message &ThisIsWrong);
-public:
-    typedef std::vector<std::string> Text;
-    Message(std::string Sender,Text MessageText);
-    ~Message();
-    static inline unsigned long int GetLastUID()
-    {
-        return LastUID;
-    }
-};
+    this->MessUID=GetLastUID();
+    LastUID++;
+    this->Sender=Sender;
+    this->MessText=MessageText;
+}
 
-class Folder
+// реализация Folder
+Folder::Folder(std::string NewFolderName)
 {
-    std::string FolderName;
-    std::set<*Message> FolderMessages;
-    Folder();
-public:
-    Folder(std::string NewFolderName);
-    ~Folder();
-};
+    this->FolderName = NewFolderName;
+    KnownFolders.insert(this);
+}
 
-class Tag
+Folder::~Folder()
 {
-    std::string TagName;
-    std::set<*Message> TagMessages;
-    Tag();
-public:
-    Tag(std::string NewTagName);
-    ~Tag();
-};
+    std::set<Folder*>::iterator FolderIter;
+    FolderIter = std::find(KnownFolders.begin(),KnownFolders.end(),this);
+    if(FolderIter!=KnownFolders.end())
+        KnownFolders.erase(FolderIter);
+}
+
+// реализация Tag
+Tag::Tag(std::string NewTagName)
+{
+    this->TagName = NewTagName;
+    KnownTags.insert(this);
+}
+
+Tag::~Tag()
+{
+    std::set<Tag*>::iterator TagIter;
+    TagIter = std::find(KnownTags.begin(),KnownTags.end(),this);
+    if(TagIter!=KnownTags.end())
+        KnownTags.erase(TagIter);
+}
+
+//Реализация разных функций
+
+int Commands(std::string ConCommand)
+{
+    if(ConCommand=="View")
+        return 1;
+
+    return 0;
+}

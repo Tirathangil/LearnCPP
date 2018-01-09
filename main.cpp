@@ -9,12 +9,36 @@
 #include "include/assoc.h"
 #include "include/algos.h"
 #include "include/classes.h"
+#include "include/ch13ex.h"
 #include <iostream>
 #include <fstream>
 
 int main()
 {
 
+    using namespace std;
+
+    vector<Message*> ReceivedMessages;
+    string Command;
+
+    while(Command!="Quit")
+    {
+        cout << "[M:" << ReceivedMessages.size() << "]: ";
+        getline(cin,Command);
+
+        switch (Commands(Command)) {
+        case 0:
+            break;
+        case 1:
+            cout << "not implemented" << endl;
+            break;
+        default:
+            cout << "Command not recognized. Input command again." << endl;
+            break;
+        }
+    }
+
+    return 0;
 }
 
 /* Библиотека упражнений.
