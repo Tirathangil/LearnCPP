@@ -18,19 +18,24 @@ int main()
 
     using namespace std;
 
-    vector<Message*> ReceivedMessages;
+    vector<Message> ReceivedMessages;
     string Command;
-
-    while(Command!="Quit")
+    ComPar CommandWithPars;
+    while(true)
     {
         cout << "[M:" << ReceivedMessages.size() << "]: ";
         getline(cin,Command);
+        CommandWithPars = parseCommand(Command);
 
-        switch (Commands(Command)) {
+        switch (CommandWithPars.first) {
         case 0:
+            return 0;
             break;
         case 1:
             cout << "not implemented" << endl;
+            break;
+        case 200:
+            DebugSendMessage(ReceivedMessages);
             break;
         default:
             cout << "Command not recognized. Input command again." << endl;

@@ -1,5 +1,6 @@
 #include "include/ch13ex.h"
 #include <algorithm>
+#include <cctype>
 //Инициализация static-членов классов.
 unsigned long int Message::LastUID = 0;
 std::set<Folder*> Folder::KnownFolders;
@@ -13,6 +14,12 @@ Message::Message(std::string Sender, Text MessageText)
     this->Sender=Sender;
     this->MessText=MessageText;
 }
+unsigned long int Message::getMessageNum()
+{
+    return MessUID;
+}
+Message::~Message()
+{}
 
 // реализация Folder
 Folder::Folder(std::string NewFolderName)
@@ -46,10 +53,65 @@ Tag::~Tag()
 
 //Реализация разных функций
 
-int Commands(std::string ConCommand)
+int WhichCommand(std::string Command)
 {
-    if(ConCommand=="View")
+    using namespace std;
+    string::iterator CharLower = Command.begin();
+    for(;CharLower!=Command.end();CharLower++)
+        *CharLower = std::tolower(*CharLower);
+    if(Command == "view")
         return 1;
+    if(Command == "quit")
+        return 0;
+    //Debug codes >= 200
+    if(Command == "d_sendmessage")
+        return 200;
 
-    return 0;
+    return -1; // if command wrong
+}
+
+ComPar parseCommand(std::string ParserCommand)
+{
+    using namespace std;
+
+    string::iterator ReadingFrontIter = ParserCommand.begin(), ReadingBackIter;
+    vector<string> Params;
+    string Command;
+
+    ReadingFrontIter = find(ParserCommand.begin(),ParserCommand.end(),' ');
+    Command = string(ParserCommand.begin(),ReadingFrontIter);
+
+    while(ReadingFrontIter < ParserCommand.end())
+    {
+        ReadingBackIter = find(ReadingFrontIter,ParserCommand.end(),' ');
+        if(ReadingBackIter == ReadingFrontIter)
+            break;
+        Params.push_back(string(ReadingFrontIter,ReadingBackIter));
+        ReadingFrontIter = ReadingBackIter;
+    }
+
+    return ComPar(WhichCommand(Command),Params);
+}
+
+void DebugSendMessage(std::vector<Message> &Rmessages)
+{
+    using namespace std;
+
+    string Sender,MailLine="";
+    Text MailText;
+
+    cout << "Enter the mail sender's: ";
+    cin >> Sender;
+    cout << "When you finish to mail text, type 'Endmails' (stricly) to new string and press enter." << endl << "Mail text: " << endl;
+
+    while (MailLine!="Endmails")
+    {
+        getline(cin,MailLine);
+        MailText.push_back(MailLine);
+    }
+
+    Rmessages.push_back(Message(Sender,MailText));
+    cout << "Message #" << Rmessages.back().getMessageNum() << " created." << endl;
+
+    return;
 }

@@ -17,6 +17,7 @@
 // 5. Командный интерфейс.
 
 typedef std::vector<std::string> Text;
+typedef std::pair<int,std::vector<std::string>> ComPar;
 
 class Folder
 {
@@ -53,15 +54,22 @@ class Message
 public:
     Message(std::string Sender,Text MessageText);
     ~Message();
+
+    unsigned long int getMessageNum();
+
     static inline unsigned long int GetLastUID()
     {
         return LastUID;
     }
 };
 
+int WhichCommand(std::string Command);
+ComPar parseCommand(std::string ParserCommand);
 bool LoadDataFromDisk();
 bool SaveDataToDisk();
 void ReceiveMessage(Message *NewMessage);
-int Commands(std::string ConCommand);
+//Debug functions
+void DebugSendMessage(std::vector<Message> &Rmessages);
+
 
 #endif // CH13EX_H
