@@ -1,4 +1,6 @@
 #include "include/ch13ex.h"
+#include <fstream>
+#include <iostream>
 #include <algorithm>
 #include <cctype>
 //Инициализация static-членов классов.
@@ -52,6 +54,30 @@ Tag::~Tag()
 }
 
 //Реализация разных функций
+
+bool LoadDataFromDisk()
+{
+    using namespace std;
+
+    ifstream MessagesFile("messages.mail");
+    ifstream FoldersFile("folders.mail");
+    ifstream TagsFile("tags.mail");
+
+    MessagesFile.open();
+    if(!MessagesFile.is_open())
+        return false;
+    while(!MessagesFile.eof())
+    {
+
+    }
+
+    return false;
+}
+bool SaveDataToDisk()
+{
+
+    return false;
+}
 
 int WhichCommand(std::string Command)
 {

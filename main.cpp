@@ -15,12 +15,12 @@
 
 int main()
 {
-
     using namespace std;
 
     vector<Message> ReceivedMessages;
     string Command;
     ComPar CommandWithPars;
+
     while(true)
     {
         cout << "[M:" << ReceivedMessages.size() << "]: ";
