@@ -17,13 +17,13 @@ int main()
 {
     using namespace std;
 
-    vector<Message> ReceivedMessages;
+    vector<Message> *ReceivedMessages = new vector<Message>;
     string Command;
     ComPar CommandWithPars;
 
     while(true)
     {
-        cout << "[M:" << ReceivedMessages.size() << "]: ";
+        cout << "[M:" << ReceivedMessages->size() << "]: ";
         getline(cin,Command);
         CommandWithPars = parseCommand(Command);
 
@@ -36,6 +36,16 @@ int main()
             break;
         case 200:
             DebugSendMessage(ReceivedMessages);
+            break;
+        case 201:
+        {
+            string dbgLoading;
+            LoadParams debugView;
+            cout << "Enter debug text: ";
+            getline(cin, dbgLoading);
+            debugView=parseLoading(dbgLoading);
+            cout << debugView.first << " " << debugView.second << endl;
+        }
             break;
         default:
             cout << "Command not recognized. Input command again." << endl;

@@ -55,19 +55,25 @@ Tag::~Tag()
 
 //Реализация разных функций
 
-bool LoadDataFromDisk()
+bool LoadDataFromDisk(std::vector<Message> &MessageArchive)
 {
     using namespace std;
 
-    ifstream MessagesFile("messages.mail");
+    ifstream MessagesFile;
     ifstream FoldersFile("folders.mail");
     ifstream TagsFile("tags.mail");
-
-    MessagesFile.open();
+    string TextLine;
+    LoadParams messageParams;
+    int Control;
+    MessagesFile.open("messages.mail");
     if(!MessagesFile.is_open())
         return false;
     while(!MessagesFile.eof())
     {
+        getline(MessagesFile,TextLine);
+        messageParams=parseLoading(TextLine);
+        if(messageParams=="Message")
+
 
     }
 
@@ -92,6 +98,8 @@ int WhichCommand(std::string Command)
     //Debug codes >= 200
     if(Command == "d_sendmessage")
         return 200;
+    if(Command == "d_loadtest")
+        return 201;
 
     return -1; // if command wrong
 }
@@ -118,8 +126,28 @@ ComPar parseCommand(std::string ParserCommand)
 
     return ComPar(WhichCommand(Command),Params);
 }
+LoadParams parseLoading(std::string ParserText)
+{
+    using namespace std;
+    LoadParams ReturnValue;
+    string SecondParam = "";
+    if(ParserText.find("<message")!=string::npos)
+        ReturnValue.first="Message";
+    if(ParserText.find("<folder")!=string::npos)
+        ReturnValue.first="Folder";
+    if(ParserText.find("<tag")!=string::npos)
+        ReturnValue.first="Tag";
+    if(ParserText.find("<text")!=string::npos)
+        ReturnValue.first="Text";
 
-void DebugSendMessage(std::vector<Message> &Rmessages)
+    std::copy(ParserText.begin()+ParserText.find("val=")+string("val=").length(),
+              ParserText.begin()+ParserText.find(">"),
+              back_inserter(SecondParam));
+    ReturnValue.second=SecondParam;
+
+    return ReturnValue;
+}
+void DebugSendMessage(std::vector<Message> *Rmessages)
 {
     using namespace std;
 
@@ -136,8 +164,8 @@ void DebugSendMessage(std::vector<Message> &Rmessages)
         MailText.push_back(MailLine);
     }
 
-    Rmessages.push_back(Message(Sender,MailText));
-    cout << "Message #" << Rmessages.back().getMessageNum() << " created." << endl;
+    Rmessages->push_back(Message(Sender,MailText));
+    cout << "Message #" << Rmessages->back().getMessageNum() << " created." << endl;
 
     return;
 }

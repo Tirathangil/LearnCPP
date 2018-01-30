@@ -18,6 +18,7 @@
 
 typedef std::vector<std::string> Text;
 typedef std::pair<int,std::vector<std::string>> ComPar;
+typedef std::pair<std::string,std::string> LoadParams;
 
 class Folder
 {
@@ -65,11 +66,12 @@ public:
 
 int WhichCommand(std::string Command);
 ComPar parseCommand(std::string ParserCommand);
-bool LoadDataFromDisk();
+LoadParams parseLoading(std::string ParserText);
+bool LoadDataFromDisk(std::vector<Message> &MessageArchive);
 bool SaveDataToDisk();
 void ReceiveMessage(Message *NewMessage);
 //Debug functions
-void DebugSendMessage(std::vector<Message> &Rmessages);
+void DebugSendMessage(std::vector<Message> *Rmessages);
 
 
 #endif // CH13EX_H
