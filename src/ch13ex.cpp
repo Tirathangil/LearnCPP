@@ -64,7 +64,7 @@ bool LoadDataFromDisk(std::vector<Message> &MessageArchive)
     ifstream TagsFile("tags.mail");
     string TextLine;
     LoadParams messageParams;
-    int Control;
+    int CheckSum(0);
     MessagesFile.open("messages.mail");
     if(!MessagesFile.is_open())
         return false;
@@ -73,7 +73,10 @@ bool LoadDataFromDisk(std::vector<Message> &MessageArchive)
         getline(MessagesFile,TextLine);
         messageParams=parseLoading(TextLine);
         if(messageParams=="Message")
+        {
+            CheckSum=+100;
 
+        }
 
     }
 
