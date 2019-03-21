@@ -72,10 +72,9 @@ bool LoadDataFromDisk(std::vector<Message> &MessageArchive)
     {
         getline(MessagesFile,TextLine);
         messageParams=parseLoading(TextLine);
-        if(messageParams=="Message")
+        if(messageParams.first=="Message")
         {
             CheckSum=+100;
-
         }
 
     }
@@ -159,7 +158,7 @@ void DebugSendMessage(std::vector<Message> *Rmessages)
 
     cout << "Enter the mail sender's: ";
     cin >> Sender;
-    cout << "When you finish to mail text, type 'Endmails' (stricly) to new string and press enter." << endl << "Mail text: " << endl;
+    cout << "When you finish to mail text, type 'Endmails' (strictly) to new string and press enter." << endl << "Mail text: " << endl;
 
     while (MailLine!="Endmails")
     {
