@@ -79,7 +79,7 @@ bool LoadDataFromDisk(std::vector<Message> &MessageArchive)
 
     }
 
-    return false;
+    return true;
 }
 bool SaveDataToDisk()
 {

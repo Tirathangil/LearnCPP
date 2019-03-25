@@ -15,9 +15,9 @@ using namespace std;
 
 void ReadDBFile(ifstream&);
 void WriteDBFile(ofstream&);
-int GetTagParameter();
-int GetTagValues();
-string GetTagText();
+int GetTagParameter(string);
+int GetTagValues(string);
+string GetTagText(string);
 
 
 
