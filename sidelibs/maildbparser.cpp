@@ -14,15 +14,12 @@ void ReadDBFile(ifstream &ReadStream)
     while(ReadStream.eof()!=true)
     {
         string::iterator ParsingSymbol;
-        int FindSym;
+        size_t FindSym;
         string Tag,Parameter,Value,TagText;
 
         getline(ReadStream,ParsingLine,'<');
+        getline(ReadStream,Tag,' ');
         getline(ReadStream,ParsingLine,'>');
-
-        ParsingSymbol=ParsingLine.begin;
-        FindSym=ParsingLine.find(' ');
-        Tag=ParsingLine.substr(0,ParsingLine.find(' '));
 
         while()
         {
