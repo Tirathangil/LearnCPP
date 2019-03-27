@@ -13,20 +13,53 @@ void ReadDBFile(ifstream &ReadStream)
 
     while(ReadStream.eof()!=true)
     {
-        string::iterator ParsingSymbol;
-        size_t FindSym;
         string Tag,Parameter,Value,TagText;
+        string::iterator Finder;
+        string::size_type Pos1,Pos2;
 
         getline(ReadStream,ParsingLine,'<');
-        getline(ReadStream,Tag,' ');
         getline(ReadStream,ParsingLine,'>');
-
-        while()
+        Pos1=ParsingLine.find(' ');
+        if(Pos1 == ParsingLine.npos)
         {
-
-
+            //Определение тега.
+            //Если он будет незакрывающим - автоматом  ошибка,
+            //ибо незакрывающие теги имеют пробелы
+            //по наличию в нем обязательных параметров
         }
-
+        //Алгоритм на итераторах
+        Finder=ParsingLine.begin();
+        while(*Finder!=' ')
+        {
+            Tag.push_back(*Finder);
+            Finder++;
+        }
+        while(Finder!=ParsingLine.end())
+        {
+            while(*Finder==' ')
+            {
+                Finder++;
+            }
+            while(*Finder!='=')
+            {
+                Parameter.push_back(*Finder);
+            }
+            Finder++;
+            while(*Finder!=' ')
+            {
+                Value.push_back(*Finder);
+            }
+        }
+        //Альтернатива итераторам
+        Pos1=ParsingLine.find(' ');
+        Tag=ParsingLine.substr(0,Pos1);
+        while(Pos1 != ParsingLine.npos)
+        {
+            Pos2=ParsingLine.find('=',Pos1);
+            Parameter=ParsingLine.substr(Pos1,Pos2-Pos1);
+            Pos1=ParsingLine.find(' ',Pos2);
+            Value=ParsingLine.substr(Pos2,Pos1-Pos2);
+        }
 //        getline(ReadStream,ParsingLine);
 
 //        while(ParsingSymbol != ParsingLine.end())
