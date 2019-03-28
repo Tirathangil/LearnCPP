@@ -1,6 +1,6 @@
 #include "include/maildbparser.h"
 
-void ReadDBFile(ifstream &ReadStream)
+int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
 {
     string ParsingLine;
     bool Folder(false),Label(false),Message(false);
@@ -8,50 +8,42 @@ void ReadDBFile(ifstream &ReadStream)
     ReadStream.open("messages.db");
     if(!ReadStream.is_open())
     {
-        return;
+        return 1;
     }
 
     while(ReadStream.eof()!=true)
     {
         string Tag,Parameter,Value,TagText;
-        string::iterator Finder;
         string::size_type Pos1,Pos2;
+        FullTag OneTag;
 
         getline(ReadStream,ParsingLine,'<');
+        if(Folder || Label || Message)
+            TagText=ParsingLine;
         getline(ReadStream,ParsingLine,'>');
         Pos1=ParsingLine.find(' ');
         if(Pos1 == ParsingLine.npos)
         {
-            //Определение тега.
-            //Если он будет незакрывающим - автоматом  ошибка,
-            //ибо незакрывающие теги имеют пробелы
-            //по наличию в нем обязательных параметров
-        }
-        //Алгоритм на итераторах
-        Finder=ParsingLine.begin();
-        while(*Finder!=' ')
-        {
-            Tag.push_back(*Finder);
-            Finder++;
-        }
-        while(Finder!=ParsingLine.end())
-        {
-            while(*Finder==' ')
+            //The absense of breaks is not a mistake.
+            //This implementation of the switch means
+            //that when the major tag is encountered
+            //then all others must be closed.
+            switch(GetTagID(ParsingLine))
             {
-                Finder++;
-            }
-            while(*Finder!='=')
-            {
-                Parameter.push_back(*Finder);
-            }
-            Finder++;
-            while(*Finder!=' ')
-            {
-                Value.push_back(*Finder);
+            case -1:
+                Folder=false;
+            case -2:
+                Message=false;
+            case -3:
+                Label=false;
+                break;
+            default:
+                ReadStream.close();
+                return 1; //no required parameters
             }
         }
-        //Альтернатива итераторам
-        Pos1=ParsingLine.find(' ');
+        OneTag.Name=Tag;
+        OneTag.Description=TagText;
         Tag=ParsingLine.substr(0,Pos1);
         while(Pos1 != ParsingLine.npos)
         {
@@ -59,80 +51,45 @@ void ReadDBFile(ifstream &ReadStream)
             Parameter=ParsingLine.substr(Pos1,Pos2-Pos1);
             Pos1=ParsingLine.find(' ',Pos2);
             Value=ParsingLine.substr(Pos2,Pos1-Pos2);
+            OneTag.Parameters.push_back(TagParameter(Parameter,Value));
         }
-//        getline(ReadStream,ParsingLine);
-
-//        while(ParsingSymbol != ParsingLine.end())
-//        {
-//            if(*ParsingSymbol == ' ')
-//            {
-//                ParsingSymbol++;
-//            }
-//            if(*ParsingSymbol == '<')
-//            {
-//                Paired++;
-//                while(*ParsingSymbol != ' ')
-//                {
-//                    ParsingSymbol++;
-//                    Tag.push_back(*ParsingSymbol);
-//                }
-//                GetTagParameter(Tag);
-//                ParsingSymbol++;
-//            }
-//
-//            while(Paired != 0)
-//            {
-//                string TagParameters;
-//                while(*ParsingSymbol==' ')
-//                    ParsingSymbol++;
-//                while(*ParsingSymbol!=' ')
-//                {
-//                    TagParameters.push_back(*ParsingSymbol);
-//                    ParsingSymbol++;
-//                }
-
-//                string::iterator ParseValues = TagParameters.begin();
-//                while(*ParseValues!='=')
-//                {
-//                    Parameter.push_back(*ParseValues);
-//                    ParseValues++;
-//                }
-//                ParseValues++;
-//                while (ParseValues!=TagParameters.end())
-//                {
-//                    if(*ParsingSymbol == '>')
-//                    {
-//                        Paired--;
-//                        ParsingSymbol++;
-//                    }
-//                    Value.push_back(*ParseValues);
-//                    ParseValues++;
-//                }
-
-//                if(*ParsingSymbol == '>')
-//                {
-//                    Paired--;
-//                    ParsingSymbol++;
-//                }
-//            }
-
-//        }
+        TagsList.push_back(OneTag);
     }
     ReadStream.close();
+    return 0;
 }
 
-void WriteDBFile(ofstream& WriteStream)
+int WriteDBFile(ofstream& WriteStream, vector<FullTag> &TagsList)
 {
     WriteStream.open("messages.db");
     if(!WriteStream.is_open())
     {
-        return;
+        return 1;
     }
 
     WriteStream.close();
+    return 0;
 }
 
-int GetTagParameter(string ParamWord)
+int GetTagID(string TagString)
 {
+    string UPPERTag;
+    for(string::size_type StringChar=0; StringChar < TagString.length(); StringChar++)
+    {
+        UPPERTag.push_back(toupper(TagString[StringChar]));
+    }
+    if(UPPERTag == "/FOLDER")
+        return -1;
+    if(UPPERTag == "/MESSAGE")
+        return -2;
+    if(UPPERTag == "/LABEL")
+        return -3;
+    if(UPPERTag == "FOLDER")
+        return 1;
+    if(UPPERTag == "MESSAGE")
+        return 2;
+    if(UPPERTag == "LABEL")
+        return 3;
+
     return 0;
 }

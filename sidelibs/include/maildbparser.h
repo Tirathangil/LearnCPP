@@ -13,16 +13,17 @@
 
 using namespace std;
 
-void ReadDBFile(ifstream&);
-void WriteDBFile(ofstream&);
-int GetTagParameter(string);
-int GetTagValues(string);
-string GetTagText(string);
+typedef pair<string,string> TagParameter;
 
+struct FullTag
+{
+    string Name;
+    string Description;
+    vector<TagParameter> Parameters;
+};
 
-
-
-
-
+int ReadDBFile(ifstream&,vector<FullTag>&);
+int WriteDBFile(ofstream&,vector<FullTag>&);
+int GetTagID(string);
 
 #endif // MAILDBPARSER_H
