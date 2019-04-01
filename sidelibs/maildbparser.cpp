@@ -1,6 +1,6 @@
 #include "include/maildbparser.h"
 
-int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
+int ReadDBFile(ifstream &ReadStream,vector<FullTag> *TagsList)
 {
     string ParsingLine;
     bool Folder(false),Label(false),Message(false);
@@ -13,14 +13,16 @@ int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
 
     while(ReadStream.eof()!=true)
     {
-        string Tag,Parameter,Value,TagText;
+        string Parameter,Value;
         string::size_type Pos1,Pos2;
         FullTag OneTag;
 
         getline(ReadStream,ParsingLine,'<');
+        OneTag.Description=ParsingLine;
         if(Folder || Label || Message)
-            TagText=ParsingLine;
-        getline(ReadStream,ParsingLine,'>');
+            OneTag.Description=ParsingLine;
+
+        getline(ReadStream,ParsingLine,'>');;
         Pos1=ParsingLine.find(' ');
         if(Pos1 == ParsingLine.npos)
         {
@@ -28,7 +30,8 @@ int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
             //This implementation of the switch means
             //that when the major tag is encountered
             //then all others must be closed.
-            switch(GetTagID(ParsingLine))
+            OneTag.Name=ParsingLine;
+            switch(GetTagID(OneTag.Name))
             {
             case -1:
                 Folder=false;
@@ -37,14 +40,10 @@ int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
             case -3:
                 Label=false;
                 break;
-            default:
-                ReadStream.close();
-                return 1; //no required parameters
             }
         }
-        OneTag.Name=Tag;
-        OneTag.Description=TagText;
-        Tag=ParsingLine.substr(0,Pos1);
+        OneTag.Name=ParsingLine.substr(0,Pos1);
+
         while(Pos1 != ParsingLine.npos)
         {
             Pos2=ParsingLine.find('=',Pos1);
@@ -53,7 +52,7 @@ int ReadDBFile(ifstream &ReadStream,vector<FullTag> &TagsList)
             Value=ParsingLine.substr(Pos2,Pos1-Pos2);
             OneTag.Parameters.push_back(TagParameter(Parameter,Value));
         }
-        TagsList.push_back(OneTag);
+        TagsList->push_back(OneTag);
     }
     ReadStream.close();
     return 0;
