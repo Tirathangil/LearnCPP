@@ -10,6 +10,7 @@
 #include "include/algos.h"
 #include "include/classes.h"
 #include "include/ch13ex.h"
+#include <QtGui>
 #include <iostream>
 #include <fstream>
 
