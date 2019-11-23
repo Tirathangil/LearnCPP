@@ -11,8 +11,7 @@ SOURCES += main.cpp \
     src/assoc.cpp \
     src/algos.cpp \
     src/classes.cpp \
-    src/ch13ex.cpp \
-    sidelibs/maildbparser.cpp
+    src/ch13ex.cpp
 
 HEADERS += \
     include/stringsexercises.h \
@@ -26,5 +25,4 @@ HEADERS += \
     include/assoc.h \
     include/algos.h \
     include/classes.h \
-    include/ch13ex.h \
-    sidelibs/include/maildbparser.h
+    include/ch13ex.h

@@ -1,10 +1,12 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
+CONFIG += shared c++11
 CONFIG -= qt
 
 HEADERS += \
-        include\maildbparser.h
+        include/maildbparser.h
 SOURCES += \
-        main.cpp \
+        maildbparser.cpp \
         maildbparser.cpp
+TARGET = dbparser.so
+
+QMAKE_CFLAGS = '-fPIC'
+QMAKE_LFLAGS = '-shared'
